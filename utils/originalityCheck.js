@@ -1,9 +1,12 @@
-
 function checkOriginality(title) {
-  const knownTitles = ["Sholay", "Namak Halaal", "Sarkar", "Baahubali", "Pushpa"];
-  return knownTitles.includes(title.trim())
-    ? "⚠️ This title may resemble a well-known film. Consider modifying it."
-    : "";
+  // Basic keyword check – you can later upgrade with plagiarism API
+  const knownTitles = ['Titanic', 'Avengers', 'Harry Potter'];
+
+  if (knownTitles.includes(title.trim())) {
+    return '⚠️ This title may resemble existing work';
+  }
+
+  return null;
 }
 
 module.exports = { checkOriginality };
