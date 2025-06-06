@@ -1,19 +1,12 @@
-const express = require('express');
-const cors = require('cors');
-const storyRoutes = require('./routes/story');
+import express from 'express';
+import generateStoryRoute from './routes/generateStory.js';
 
 const app = express();
-const PORT = process.env.PORT || 10000;
 
-app.use(cors());
 app.use(express.json());
+app.use('/generate-story', generateStoryRoute);
 
-app.use('/generate-story', storyRoutes);
-
-app.get('/', (req, res) => {
-  res.send('🧠 StoryMind AI Backend is running');
-});
-
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
